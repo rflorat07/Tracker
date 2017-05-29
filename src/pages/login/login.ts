@@ -1,24 +1,34 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
-export class LoginPage {
+export class LoginPage implements AfterViewInit {
+
+  @ViewChild(Slides) slides: Slides;
+
+  clave: string = "fher-1";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  ngAfterViewInit() {
+    this.slides.lockSwipes(true);
+    this.slides.freeMode = false;
+    this.slides.paginationType = "progress";
   }
+
+  continuar() {
+    // Verificar si la clave es valida
+  }
+
+  ingresar() {
+    // Tenemos la clave y vamos al Home
+  }
+
 
 }
