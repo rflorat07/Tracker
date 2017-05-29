@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -29,7 +30,10 @@ import { UbicacionProvider } from '../providers/ubicacion/ubicacion';
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDLaOcnmKoeq3JQ_FLAGpK_cqfkoyVmx8o'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +47,7 @@ import { UbicacionProvider } from '../providers/ubicacion/ubicacion';
     UsuarioProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     UbicacionProvider
-    
+
   ]
 })
 export class AppModule { }

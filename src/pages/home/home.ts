@@ -10,11 +10,17 @@ import { UbicacionProvider } from './../../providers/ubicacion/ubicacion';
 })
 export class HomePage {
 
+  usuario: any = {};
+
   constructor(
     public navCtrl: NavController,
     private ubicacionProvider: UbicacionProvider) {
 
     this.ubicacionProvider.iniciar_localizacion();
+    this.ubicacionProvider.usuario.subscribe((data) => {
+      console.log(data);
+      this.usuario = data;
+    })
   }
 
 }
