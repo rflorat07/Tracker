@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -13,8 +15,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig } from './../config/firebase.config';
 
-//Providers
+// Providers
 import { UsuarioProvider } from '../providers/usuario/usuario';
+import { UbicacionProvider } from '../providers/ubicacion/ubicacion';
 
 @NgModule({
   declarations: [
@@ -35,9 +38,12 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
   ],
   providers: [
     StatusBar,
+    Geolocation,
     SplashScreen,
+    UsuarioProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    UsuarioProvider
+    UbicacionProvider
+    
   ]
 })
 export class AppModule { }
